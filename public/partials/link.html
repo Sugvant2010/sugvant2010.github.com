@@ -1,0 +1,10 @@
+<div class="col-md-12 link" ng-init="vm.one()">
+    <span class="counter" ng-if="vm.link._creator._id == userId"><span class="glyphicon glyphicon-eye-open"></span> {{ vm.link.counter }}</span>
+    <h2><a ng-href="/{{ vm.link.shortLink }}" target="_blank">http://localhost:3000/{{ vm.link.shortLink }}</a></h2>
+    <p class="full-link" ng-bind="vm.link.fullLink"></p>
+    <small  ng-repeat="tag in vm.link.tags track by $index">
+        <a class="inline" ng-href="/tags/{{ tag }}" ng-bind="tag"></a>
+    </small>
+    <p class="description" ng-bind="vm.link.description"></p>
+    <a ng-href="/links/{{vm.link._id}}/update" ng-if="vm.link._creator._id == userId">Редактировать</a>
+</div>

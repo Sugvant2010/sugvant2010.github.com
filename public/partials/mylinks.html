@@ -1,0 +1,40 @@
+<table class="table table-hover" >
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ссылка</th>
+            <th>Полная ссылка</th>
+            <th><span class="glyphicon glyphicon-eye-open"></span></th>
+            <th><span class="glyphicon glyphicon-cog"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+        <input class="form-control search" type="search" ng-model="q" placeholder="Поиск"/>
+        <tr ng-repeat="link in vm.links | filter:q as result">
+            <td ng-bind="$index+1"></td>
+            <td>
+                <a ng-href="/{{link.shortLink}}" target="_blank">http://localhost:3000/{{link.shortLink}}</a>
+                <div class="tags">
+                    <small ng-repeat="tag in link.tags track by $index">
+                        <a class="tag" ng-href="/tags/{{ tag }}" ng-bind="tag"></a>
+                    </small>
+                </div>
+            </td>
+            <td>
+                <small ng-bind="link.fullLink"></small>
+                <small>
+                    <a href="#" ng-click="link.showDetails = ! link.showDetails">описание</a>
+                </small>
+                <div class="description" ng-show="link.showDetails">
+                    <p ng-bind="link.description"></p>
+                </div>
+            </td>
+            <td ng-bind="link.counter"></td>
+            <td>
+                <a class="view" ng-href="links/{{link._id}}/update">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
