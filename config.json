@@ -1,0 +1,5 @@
+{
+  "port": 3000,
+  "dbConnect": "mongodb://shortink_user:Mongo123@ds033744.mongolab.com:33744/shortink_base",
+  "secret": "secret"
+}
