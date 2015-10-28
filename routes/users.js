@@ -48,16 +48,20 @@ module.exports = {
   },
   update: function(req, res, next) {
     User.findOne(req.user._id, function(err, user){
+      console.log(err);
       if (err) { return next(err); }
       user.username = req.body.username || user.username;
       user.email = req.body.email || user.email;
       user.password = req.body.password ? req.body.password : user.password;
 
       user.save(function(err, user) {
+        console.log(err);
+        console.log(user);
         if (err && (11000 === err.code || 11001 === err.code)) {
           res.json({result : false, error : err, note: "Ошибка ввода данных"});
         }else{
           if (err) { return next(err); }
+
           res.json({result : true, user : user, note: "Данные успешно обновлены"});
         }
       });

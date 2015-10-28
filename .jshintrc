@@ -11,6 +11,8 @@
     "_"         : false,
     "module"    : false,
     "require"   : false,
-    "__dirname" : false
+    "__dirname" : false,
+    "describe" : false,
+    "it" : false
   }
 }

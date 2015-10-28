@@ -68,7 +68,7 @@ module.exports = {
         });
     },
     tags: function(req, res, next){
-        Link.find({ tags : req.params.tags },"shorLink fullLink tags _creator description").populate('_creator', 'username').exec(function(err,links){
+        Link.find({ tags : req.params.tags },"shortLink fullLink tags _creator description").populate('_creator', 'username').exec(function(err,links){
             if (err) { return next(err); }
             res.json({result: true, links : links });
         });
